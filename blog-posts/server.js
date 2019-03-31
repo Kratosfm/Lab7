@@ -21,7 +21,7 @@ let posts = [
     }
 ]
 
-app.get('/blog-posts', (req,res) => {
+app.get('/blog-post', (req,res) => {
     res.status(200).json({
         message: "All Post sent",
         status: 200,
@@ -29,7 +29,7 @@ app.get('/blog-posts', (req,res) => {
     })
 })
 
-app.get('/blog-posts/:author*?', (req,res) => {
+app.get('/blog-post/:author*?', (req,res) => {
     if (!(req.params.author)) {
         res.status(406).json({
             message: `Missing field author in params.`,
@@ -56,7 +56,7 @@ app.get('/blog-posts/:author*?', (req,res) => {
         })
     }
 })
-app.post('/blog-posts', (req,res) => {
+app.post('/blog-post', (req,res) => {
     let requiredFields = ["title", "content", "author", "publishDate"]
     for (rf of requiredFields) {
         if (!(rf in req.body)) {
@@ -81,7 +81,7 @@ app.post('/blog-posts', (req,res) => {
     })
 })
 
-app.delete('/blog-posts/:id*?', (req,res) => {
+app.delete('/blog-post/:id', (req,res) => {
     if (!(req.params.id)) {
         res.status(406).json({
             message: `Missing field in params.`,
@@ -119,7 +119,7 @@ app.delete('/blog-posts/:id*?', (req,res) => {
     })
 })
 
-app.put('/blog-posts/:id*?', (req,res) => {
+app.put('/blog-post/:id', (req,res) => {
     if (!(req.params.id)) {
         res.status(406).json({
             message: `Missing field id`,
