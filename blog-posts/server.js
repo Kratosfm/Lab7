@@ -29,7 +29,7 @@ app.get('/blog-post', (req,res) => {
     })
 })
 
-app.get('/blog-post/:author*?', (req,res) => {
+app.get('/blog-post/:author', (req,res) => {
     if (!(req.params.author)) {
         res.status(406).json({
             message: `Missing field author in params.`,
